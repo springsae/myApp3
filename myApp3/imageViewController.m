@@ -7,8 +7,10 @@
 //
 
 #import "imageViewController.h"
+#import "ViewController.h"
 
-@interface imageViewController ()
+
+@interface imageViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 @end
 
@@ -16,8 +18,95 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    if (_library ==nil)
+    {
+        _library = [[ALAssetsLibrary alloc]init];
+    }
+    
+    [self showPhoto:self.assetsurl];
 }
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+    {
+        //カメラライブラリから選んだ写真のURLを取得。
+        _assetsUrl = [(NSURL *)[info objectForKey:@"UIImagePickerControllerReferenceURL"] absoluteString];
+        
+        [self showPhoto:_assetsUrl];
+        
+        if (!_assetsUrl)
+        {
+            UIImage *originalImage = (UIImage *)[info objectForKey:UIImagePickerControllerOriginalImage];
+            self.showImage.image = originalImage;
+        }
+        
+        
+        [picker dismissViewControllerAnimated:YES completion:nil];  //元の画面に戻る
+    }
+    
+    //assetsから取得した画像を表示する
+-(void)showPhoto:(NSString *)url
+    {
+        //URLからALAssetを取得
+        [_library assetForURL:[NSURL URLWithString:url]
+                  resultBlock:^(ALAsset *asset)
+         {
+                      
+                      //画像があればYES、無ければNOを返す
+                      if(asset)
+                      {
+                          NSLog(@"データがあります");
+                          //ALAssetRepresentationクラスのインスタンスの作成
+                          ALAssetRepresentation *assetRepresentation = [asset defaultRepresentation];
+                          
+                          //ALAssetRepresentationを使用して、フルスクリーン用の画像をUIImageに変換
+                          //fullScreenImageで元画像と同じ解像度の写真を取得する。
+                          UIImage *fullscreenImage = [UIImage imageWithCGImage:[assetRepresentation fullScreenImage]];
+                          self.showImage.image = fullscreenImage; //イメージをセット
+                      }else
+                      {
+                          NSLog(@"データがありません");
+                      }
+                      
+        } failureBlock: nil];
+        
+    }
+
+
+- (IBAction)tapBackCamera:(id)sender
+{
+    [self.inputViewController dismissViewControllerAnimated:YES completion:nil];
+//    [[self.inputViewController navigationController] popViewControllerAnimated:YES];
+//    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    UIImagePickerControllerSourceType sourceType;
+    
+    UIImagePickerController *ipc;
+    
+    sourceType = UIImagePickerControllerSourceTypeCamera;
+    
+    if (![UIImagePickerController isSourceTypeAvailable:sourceType])
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"エラー" message:@"カメラを起動できません" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
+    
+    ipc = [[UIImagePickerController alloc] init];
+    
+    [ipc setSourceType:sourceType];
+    
+    [ipc setDelegate:self];
+    
+    ipc.allowsEditing = YES;
+    
+    [self presentViewController:ipc animated:YES completion:nil];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [[self presentingViewController] dismissViewControllerAnimated:YES completion:nil];
+    NSLog(@"キャンセル");
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -34,4 +123,26 @@
 }
 */
 
+//- (IBAction)tapBackCamera:(id)sender
+//{
+//    UIImagePickerControllerSourceType sourceType;
+//    UIImagePickerController *ipc;
+//    sourceType = UIImagePickerControllerSourceTypeCamera;
+//    if (![UIImagePickerController isSourceTypeAvailable:sourceType])
+//    {
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"エラー" message:@"カメラを起動できません" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//        [alert show];
+//        return;
+//    }
+//    
+//    ipc = [[UIImagePickerController alloc] init];
+//    [ipc setSourceType:sourceType];
+//    [ipc setDelegate:self];
+//    ipc.allowsEditing = YES;
+//    [self presentViewController:ipc animated:YES completion:nil];
+//    
+//}
+
+- (IBAction)tapCallComment:(id)sender {
+}
 @end

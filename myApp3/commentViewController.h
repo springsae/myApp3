@@ -7,7 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AssetsLibrary/AssetsLibrary.h>
 
 @interface commentViewController : UIViewController
+{
+    NSString *_assetsUrl;    //assetsUrlを格納するインスタンス
+    ALAssetsLibrary *_library;
+}
+
+@property (weak, nonatomic) IBOutlet UIButton *okButton;
+@property (weak, nonatomic) IBOutlet UIButton *backImageButton;
+
+- (IBAction)tapBackImage:(id)sender;
+- (IBAction)tapOk:(id)sender;
+@property (weak, nonatomic) IBOutlet UIPickerView *picker;
+@property (weak, nonatomic) IBOutlet UITextView *textField;
+@property (weak, nonatomic) IBOutlet UIImageView *smallImage;
+@property (nonatomic,assign) NSString *assetsurl;
 
 @end

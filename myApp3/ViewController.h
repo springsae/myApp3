@@ -7,8 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "imageViewController.h"
+#import <AssetsLibrary/AssetsLibrary.h>
 
 @interface ViewController : UIViewController
+
+@property (weak, nonatomic) IBOutlet UIButton *callCamera;
+- (IBAction)tapCallCamera:(id)sender;
+
+
 
 
 @end

@@ -14,6 +14,11 @@
 		E76A14EB1A84877700F84ECC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E76A14EA1A84877700F84ECC /* Images.xcassets */; };
 		E76A14EE1A84877700F84ECC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E76A14EC1A84877700F84ECC /* LaunchScreen.xib */; };
 		E76A14FA1A84877700F84ECC /* myApp3Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = E76A14F91A84877700F84ECC /* myApp3Tests.m */; };
+		E76A15051A849CF100F84ECC /* imageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E76A15041A849CF100F84ECC /* imageViewController.m */; };
+		E76A15081A84A14600F84ECC /* commentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E76A15071A84A14600F84ECC /* commentViewController.m */; };
+		E77869EF1A8890F000A4D009 /* TLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E77869EE1A8890F000A4D009 /* TLViewController.m */; };
+		E77869F21A88912400A4D009 /* AlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E77869F11A88912400A4D009 /* AlbumViewController.m */; };
+		E77869F51A88915800A4D009 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E77869F41A88915800A4D009 /* MapViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +45,16 @@
 		E76A14F31A84877700F84ECC /* myApp3Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = myApp3Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E76A14F81A84877700F84ECC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E76A14F91A84877700F84ECC /* myApp3Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = myApp3Tests.m; sourceTree = "<group>"; };
+		E76A15031A849CF100F84ECC /* imageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = imageViewController.h; sourceTree = "<group>"; };
+		E76A15041A849CF100F84ECC /* imageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = imageViewController.m; sourceTree = "<group>"; };
+		E76A15061A84A14600F84ECC /* commentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = commentViewController.h; sourceTree = "<group>"; };
+		E76A15071A84A14600F84ECC /* commentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = commentViewController.m; sourceTree = "<group>"; };
+		E77869ED1A8890F000A4D009 /* TLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLViewController.h; sourceTree = "<group>"; };
+		E77869EE1A8890F000A4D009 /* TLViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLViewController.m; sourceTree = "<group>"; };
+		E77869F01A88912400A4D009 /* AlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumViewController.h; sourceTree = "<group>"; };
+		E77869F11A88912400A4D009 /* AlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumViewController.m; sourceTree = "<group>"; };
+		E77869F31A88915800A4D009 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		E77869F41A88915800A4D009 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,7 +100,17 @@
 				E76A14E21A84877700F84ECC /* AppDelegate.m */,
 				E76A14E41A84877700F84ECC /* ViewController.h */,
 				E76A14E51A84877700F84ECC /* ViewController.m */,
+				E76A15031A849CF100F84ECC /* imageViewController.h */,
+				E76A15041A849CF100F84ECC /* imageViewController.m */,
+				E76A15061A84A14600F84ECC /* commentViewController.h */,
+				E76A15071A84A14600F84ECC /* commentViewController.m */,
 				E76A14E71A84877700F84ECC /* Main.storyboard */,
+				E77869ED1A8890F000A4D009 /* TLViewController.h */,
+				E77869EE1A8890F000A4D009 /* TLViewController.m */,
+				E77869F01A88912400A4D009 /* AlbumViewController.h */,
+				E77869F11A88912400A4D009 /* AlbumViewController.m */,
+				E77869F31A88915800A4D009 /* MapViewController.h */,
+				E77869F41A88915800A4D009 /* MapViewController.m */,
 				E76A14EA1A84877700F84ECC /* Images.xcassets */,
 				E76A14EC1A84877700F84ECC /* LaunchScreen.xib */,
 				E76A14DD1A84877700F84ECC /* Supporting Files */,
@@ -219,8 +244,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E77869EF1A8890F000A4D009 /* TLViewController.m in Sources */,
 				E76A14E61A84877700F84ECC /* ViewController.m in Sources */,
+				E77869F21A88912400A4D009 /* AlbumViewController.m in Sources */,
+				E77869F51A88915800A4D009 /* MapViewController.m in Sources */,
 				E76A14E31A84877700F84ECC /* AppDelegate.m in Sources */,
+				E76A15081A84A14600F84ECC /* commentViewController.m in Sources */,
+				E76A15051A849CF100F84ECC /* imageViewController.m in Sources */,
 				E76A14E01A84877700F84ECC /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -412,6 +442,7 @@
 				E76A14FF1A84877700F84ECC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E76A15001A84877700F84ECC /* Build configuration list for PBXNativeTarget "myApp3Tests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +451,7 @@
 				E76A15021A84877700F84ECC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

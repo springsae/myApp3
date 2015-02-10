@@ -7,7 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AssetsLibrary/AssetsLibrary.h>
 
 @interface imageViewController : UIViewController
+{
+    NSString *_assetsUrl;    //assetsUrlを格納するインスタンス
+    ALAssetsLibrary *_library;
+}
 
+@property (weak, nonatomic) IBOutlet UIButton *backCamera;
+@property (weak, nonatomic) IBOutlet UIButton *callComment;
+- (IBAction)tapBackCamera:(id)sender;
+- (IBAction)tapCallComment:(id)sender;
+
+@property (weak, nonatomic) IBOutlet UIImageView *showImage;
+@property (nonatomic,assign) NSString *assetsurl;
 @end

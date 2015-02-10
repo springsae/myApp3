@@ -7,6 +7,7 @@
 //
 
 #import "commentViewController.h"
+#import "imageViewController.h"
 
 @interface commentViewController ()
 
@@ -14,9 +15,43 @@
 
 @implementation commentViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    if (_library ==nil)
+    {
+        _library = [[ALAssetsLibrary alloc]init];
+    }
+    
+    [self smallImage:self.assetsurl];
+
+}
+-(void)showPhoto:(NSString *)url
+{
+    //URLからALAssetを取得
+    [_library assetForURL:[NSURL URLWithString:url]
+              resultBlock:^(ALAsset *asset)
+     {
+         
+         //画像があればYES、無ければNOを返す
+         if(asset)
+         {
+             NSLog(@"データがあります");
+             //ALAssetRepresentationクラスのインスタンスの作成
+             ALAssetRepresentation *assetRepresentation = [asset defaultRepresentation];
+             
+             //ALAssetRepresentationを使用して、フルスクリーン用の画像をUIImageに変換
+             //fullScreenImageで元画像と同じ解像度の写真を取得する。
+             UIImage *fullscreenImage = [UIImage imageWithCGImage:[assetRepresentation fullScreenImage]];
+             self.smallImage.image = fullscreenImage; //イメージをセット
+         }else
+         {
+             NSLog(@"データがありません");
+         }
+         
+     } failureBlock: nil];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -34,4 +69,34 @@
 }
 */
 
+- (IBAction)tapBackImage:(id)sender
+{   
+    [self.inputViewController dismissViewControllerAnimated:YES completion:nil];
+    
+    
+   [_library assetForURL:[NSURL URLWithString:url]
+              resultBlock:^(ALAsset *asset)
+     {
+         
+         //画像があればYES、無ければNOを返す
+         if(asset)
+         {
+             NSLog(@"データがあります");
+             //ALAssetRepresentationクラスのインスタンスの作成
+             ALAssetRepresentation *assetRepresentation = [asset defaultRepresentation];
+             
+             //ALAssetRepresentationを使用して、フルスクリーン用の画像をUIImageに変換
+             //fullScreenImageで元画像と同じ解像度の写真を取得する。
+             UIImage *fullscreenImage = [UIImage imageWithCGImage:[assetRepresentation fullScreenImage]];
+             self.smallImage.image = fullscreenImage; //イメージをセット
+         }else
+         {
+             NSLog(@"データがありません");
+         }
+         
+     } failureBlock: nil];
+}
+
+- (IBAction)tapOk:(id)sender {
+}
 @end
