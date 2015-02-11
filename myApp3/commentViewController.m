@@ -17,47 +17,46 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    if (_library ==nil)
-    {
-        _library = [[ALAssetsLibrary alloc]init];
-    }
-    
-    [self smallImage:self.assetsurl];
+    self.picker.delegate = self;
+    _categoryArray = [NSArray arrayWithObjects:
+                     @"Place",@"Food",@"View",@"Other",nil];
+}
 
-}
--(void)showPhoto:(NSString *)url
+//横方向の個数を指定
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
 {
-    //URLからALAssetを取得
-    [_library assetForURL:[NSURL URLWithString:url]
-              resultBlock:^(ALAsset *asset)
-     {
-         
-         //画像があればYES、無ければNOを返す
-         if(asset)
-         {
-             NSLog(@"データがあります");
-             //ALAssetRepresentationクラスのインスタンスの作成
-             ALAssetRepresentation *assetRepresentation = [asset defaultRepresentation];
-             
-             //ALAssetRepresentationを使用して、フルスクリーン用の画像をUIImageに変換
-             //fullScreenImageで元画像と同じ解像度の写真を取得する。
-             UIImage *fullscreenImage = [UIImage imageWithCGImage:[assetRepresentation fullScreenImage]];
-             self.smallImage.image = fullscreenImage; //イメージをセット
-         }else
-         {
-             NSLog(@"データがありません");
-         }
-         
-     } failureBlock: nil];
-    
+    return 1;
 }
+
+// pickerViewの縦の長さを決める
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    int cnt = [_categoryArray count];
+    return cnt;
+}
+
+//ピッカービューの行のタイトルを返す
+-(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    return [_categoryArray objectAtIndex:row];
+}
+
+
+//選択された行番号を取得
+-(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    NSInteger selectedRow = [pickerView selectedRowInComponent:0];
+    NSLog(@"%d",selectedRow);
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+
 
 /*
 #pragma mark - Navigation
@@ -70,33 +69,22 @@
 */
 
 - (IBAction)tapBackImage:(id)sender
-{   
+{
+    
     [self.inputViewController dismissViewControllerAnimated:YES completion:nil];
     
-    
-   [_library assetForURL:[NSURL URLWithString:url]
-              resultBlock:^(ALAsset *asset)
-     {
-         
-         //画像があればYES、無ければNOを返す
-         if(asset)
-         {
-             NSLog(@"データがあります");
-             //ALAssetRepresentationクラスのインスタンスの作成
-             ALAssetRepresentation *assetRepresentation = [asset defaultRepresentation];
-             
-             //ALAssetRepresentationを使用して、フルスクリーン用の画像をUIImageに変換
-             //fullScreenImageで元画像と同じ解像度の写真を取得する。
-             UIImage *fullscreenImage = [UIImage imageWithCGImage:[assetRepresentation fullScreenImage]];
-             self.smallImage.image = fullscreenImage; //イメージをセット
-         }else
-         {
-             NSLog(@"データがありません");
-         }
-         
-     } failureBlock: nil];
 }
 
-- (IBAction)tapOk:(id)sender {
+
+- (IBAction)tapOkButton:(id)sender
+{
+    [self.view endEditing:YES];
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([segue.identifier isEqualToString:@"backImageView"]){
+        imageViewController *iVC = [segue destinationViewController];
+        iVC.assetsurl = self.assetsurl;
+    }
 }
 @end

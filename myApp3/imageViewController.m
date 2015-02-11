@@ -8,6 +8,7 @@
 
 #import "imageViewController.h"
 #import "ViewController.h"
+#import "commentViewController.h"
 
 
 @interface imageViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
@@ -44,7 +45,7 @@
     
     //assetsから取得した画像を表示する
 -(void)showPhoto:(NSString *)url
-    {
+{
         //URLからALAssetを取得
         [_library assetForURL:[NSURL URLWithString:url]
                   resultBlock:^(ALAsset *asset)
@@ -68,7 +69,7 @@
                       
         } failureBlock: nil];
         
-    }
+}
 
 
 - (IBAction)tapBackCamera:(id)sender
@@ -107,11 +108,25 @@
     NSLog(@"キャンセル");
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    if (_library ==nil)
+    {
+        _library = [[ALAssetsLibrary alloc]init];
+    }
+    
+    [self showPhoto:self.assetsurl];
+
+    
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
 
 /*
 #pragma mark - Navigation
@@ -144,5 +159,16 @@
 //}
 
 - (IBAction)tapCallComment:(id)sender {
+    
 }
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    
+    if ([segue.identifier isEqualToString:@"showComment"]){
+        commentViewController *cVC = [segue destinationViewController];
+        cVC.assetsurl = self.assetsurl;
+    }
+    
+}
+
 @end
