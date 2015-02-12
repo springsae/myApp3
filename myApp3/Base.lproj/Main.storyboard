@@ -224,13 +224,13 @@
                                     <tabBarItem title="map" id="8sn-Ff-sKz"/>
                                 </items>
                             </tabBar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dyx-D4-o9z">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" restorationIdentifier="photo" translatesAutoresizingMaskIntoConstraints="NO" id="Dyx-D4-o9z">
                                 <rect key="frame" x="11" y="111" width="120" height="120"/>
                             </imageView>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GL9-61-BxI">
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="title" translatesAutoresizingMaskIntoConstraints="NO" id="GL9-61-BxI">
                                 <rect key="frame" x="145" y="90" width="150" height="162"/>
                             </pickerView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o9G-UC-MUA">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="comment" translatesAutoresizingMaskIntoConstraints="NO" id="o9G-UC-MUA" propertyAccessControl="none">
                                 <rect key="frame" x="16" y="246" width="295" height="93"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>

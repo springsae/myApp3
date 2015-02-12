@@ -14,6 +14,7 @@
     NSString *_assetsUrl;    //assetsUrlを格納するインスタンス
     ALAssetsLibrary *_library;
     NSArray *_categoryArray;
+
 }
 
 
@@ -21,16 +22,19 @@
 - (IBAction)tapBackImage:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UIButton *okButton;
-
 - (IBAction)tapOkButton:(id)sender;
-
-
-
 
 @property (weak, nonatomic) IBOutlet UIPickerView *picker;
 
 @property (weak, nonatomic) IBOutlet UITextView *textField;
+
 @property (weak, nonatomic) IBOutlet UIImageView *smallImage;
+
 @property (nonatomic,assign) NSString *assetsurl;
+
+@property NSUserDefaults *userDefaults;
+
+@property NSMutableArray *photoData;
+
 
 @end

@@ -17,7 +17,8 @@
 
 @implementation imageViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     if (_library ==nil)
     {
@@ -26,6 +27,7 @@
     
     [self showPhoto:self.assetsurl];
 }
+
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
     {
         //カメラライブラリから選んだ写真のURLを取得。

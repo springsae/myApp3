@@ -22,4 +22,5 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *showImage;
 @property (nonatomic,assign) NSString *assetsurl;
+
 @end
