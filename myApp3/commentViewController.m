@@ -9,7 +9,7 @@
 #import "commentViewController.h"
 #import "imageViewController.h"
 
-@interface commentViewController ()
+@interface commentViewController ()<UITextFieldDelegate>
 
 @end
 
@@ -22,11 +22,25 @@
         _library = [[ALAssetsLibrary alloc]init];
     }
     
+    if (_photolist ==nil)
+    {
+        _photolist = [[NSMutableArray alloc]init];
+    }
+    
     [self showPhoto:self.assetsurl];
     
     self.picker.delegate = self;
     _categoryArray = [NSArray arrayWithObjects:
                      @"Place",@"Food",@"View",@"Other",nil];
+    
+    //UserDefaultObjectを用意する
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    //保存されたデータを取り出す
+    _photolist = [[defaults objectForKey:@"photoData"] mutableCopy];
+    
+    
+    _textField.delegate = self;
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
@@ -107,18 +121,47 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)setObject:(id)anObject forKey:(id)aKey
+//- (void)setObject:(id)anObject forKey:(id)aKey
+//{
+//    //コメントページのdictionaryを作成
+//    NSMutableDictionary *myDictionary = [[NSMutableDictionary alloc] init];
+//    [myDictionary setObject:_assetsurl forKey:@"photo"];
+//    [myDictionary setObject:_categoryArray[[self.picker selectedRowInComponent:0]] forKey:@"title"];
+//    [myDictionary setObject:_textField.text forKey:@"comment"];
+//    
+//    //NSMutableArrayにdictionaryを挿入
+//    NSMutableArray *_photoList = [NSMutableArray array];
+//    [_photoList addObject:myDictionary];
+//    
+//    
+//}
+
+//// ユーザーデフォルトから読み込み
+//- (void)loadFromUserDefaults
+//{
+//    NSData *listData = [_userDefaults objectForKey:@"UDPhotoData"];
+//    _photoData = [[NSMutableArray alloc] init];
+//    _photoData = [NSKeyedUnarchiver unarchiveObjectWithData:listData];
+//}
+//
+////ユーザーデフォルトに保存
+//- (void)saveToUserDefaults
+//{
+//    _photoData = [[NSMutableArray alloc] initWithArray:_photoData];
+//    [_photoData addObject:_photolist];
+//    NSData *listData = [NSKeyedArchiver archivedDataWithRootObject:_photoData];
+//    [_userDefaults setObject:listData forKey:@"UDPhotoData"];
+//    [_userDefaults synchronize];
+//
+//}
+
+- (BOOL) textFieldShouldReturn:(UITextField *)textField
 {
-    NSMutableDictionary *myDictionary = [[NSMutableDictionary alloc] init];
-    [myDictionary setObject:_assetsurl forKey:@"photo"];
-    [myDictionary setObject:_categoryArray[[self.picker selectedRowInComponent:0]] forKey:@"title"];
-    [myDictionary setObject:_textField.text forKey:@"comment"];
-
-    NSMutableArray *photoList = [NSMutableArray array];
-    [photoList addObject:myDictionary];
-
+    // キーボードの非表示.
+    [self.view endEditing:YES];
+    // 改行しない.
+    return NO;
 }
-
 
 
 
@@ -142,8 +185,34 @@
 
 - (IBAction)tapOkButton:(id)sender
 {
-    [self.view endEditing:YES];
+    [self performSegueWithIdentifier:@"saveToAlbum" sender:self];
+    
+    //コメントページのdictionaryを作成
+    NSMutableDictionary *myDictionary = [[NSMutableDictionary alloc] init];
+    [myDictionary setObject:_assetsurl forKey:@"photo"];
+    [myDictionary setObject:_categoryArray[[self.picker selectedRowInComponent:0]] forKey:@"title"];
+    [myDictionary setObject:_textField.text forKey:@"comment"];
+    
+    //NSMutableArrayにdictionaryを挿入
+    //NSMutableArray *_photoList = [[NSMutableArray alloc] init];
+    [_photolist addObject:myDictionary];
+    
+    NSLog(@"%@データあり",myDictionary);
+    
+    //UserDefaultObjectを用意する
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    //画像を保存
+    [defaults setObject:_photolist forKey:@"photoData"];
+    [defaults synchronize];
+    
+    NSLog(@"%@保存",_photolist);
+    
+    
+    
 }
+
+
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -153,5 +222,6 @@
         iVC.assetsurl = self.assetsurl;
     }
 }
+
 
 @end

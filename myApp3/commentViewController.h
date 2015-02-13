@@ -14,6 +14,7 @@
     NSString *_assetsUrl;    //assetsUrlを格納するインスタンス
     ALAssetsLibrary *_library;
     NSArray *_categoryArray;
+    NSMutableArray *_photolist;
 
 }
 
