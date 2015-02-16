@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E71A35311A91C095005A79C4 /* preview.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E71A35301A91C095005A79C4 /* preview.jpg */; };
 		E76A14E01A84877700F84ECC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E76A14DF1A84877700F84ECC /* main.m */; };
 		E76A14E31A84877700F84ECC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E76A14E21A84877700F84ECC /* AppDelegate.m */; };
 		E76A14E61A84877700F84ECC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E76A14E51A84877700F84ECC /* ViewController.m */; };
@@ -32,6 +33,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E71A35301A91C095005A79C4 /* preview.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = preview.jpg; sourceTree = "<group>"; };
 		E76A14DA1A84877700F84ECC /* myApp3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myApp3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E76A14DE1A84877700F84ECC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E76A14DF1A84877700F84ECC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -75,6 +77,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E71A352F1A91C095005A79C4 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				E71A35301A91C095005A79C4 /* preview.jpg */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
 		E76A14D11A84877700F84ECC = {
 			isa = PBXGroup;
 			children = (
@@ -104,11 +114,11 @@
 				E76A15041A849CF100F84ECC /* imageViewController.m */,
 				E76A15061A84A14600F84ECC /* commentViewController.h */,
 				E76A15071A84A14600F84ECC /* commentViewController.m */,
+				E77869F01A88912400A4D009 /* AlbumViewController.h */,
+				E77869F11A88912400A4D009 /* AlbumViewController.m */,
 				E76A14E71A84877700F84ECC /* Main.storyboard */,
 				E77869ED1A8890F000A4D009 /* TLViewController.h */,
 				E77869EE1A8890F000A4D009 /* TLViewController.m */,
-				E77869F01A88912400A4D009 /* AlbumViewController.h */,
-				E77869F11A88912400A4D009 /* AlbumViewController.m */,
 				E77869F31A88915800A4D009 /* MapViewController.h */,
 				E77869F41A88915800A4D009 /* MapViewController.m */,
 				E76A14EA1A84877700F84ECC /* Images.xcassets */,
@@ -121,6 +131,7 @@
 		E76A14DD1A84877700F84ECC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E71A352F1A91C095005A79C4 /* images */,
 				E76A14DE1A84877700F84ECC /* Info.plist */,
 				E76A14DF1A84877700F84ECC /* main.m */,
 			);
@@ -224,6 +235,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E71A35311A91C095005A79C4 /* preview.jpg in Resources */,
 				E76A14E91A84877700F84ECC /* Main.storyboard in Resources */,
 				E76A14EE1A84877700F84ECC /* LaunchScreen.xib in Resources */,
 				E76A14EB1A84877700F84ECC /* Images.xcassets in Resources */,

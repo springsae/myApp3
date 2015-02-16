@@ -129,30 +129,31 @@
             <objects>
                 <viewController id="3gq-h0-xPY" customClass="AlbumViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="BKu-Fo-LsA"/>
-                        <viewControllerLayoutGuide type="bottom" id="cVb-zW-OlG"/>
+                        <viewControllerLayoutGuide type="top" id="mRX-Ug-XGd"/>
+                        <viewControllerLayoutGuide type="bottom" id="noS-gZ-s91"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="njY-lY-qXB">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <scrollView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" id="qiB-1d-Zsg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="1600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oQg-PH-Zrh">
-                                <rect key="frame" x="0.0" y="519" width="320" height="49"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <items>
-                                    <tabBarItem systemItem="favorites" id="VNR-ln-fBC"/>
-                                    <tabBarItem systemItem="more" id="Rq4-pD-b73"/>
-                                    <tabBarItem title="Item" id="XQC-RP-DuU"/>
-                                </items>
-                            </tabBar>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lhT-Ys-p1U">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="1600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1600" id="YbF-dk-s1R"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="lhT-Ys-p1U" secondAttribute="width" id="Ufi-8b-MsK"/>
+                        </constraints>
+                    </scrollView>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="1600"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nwM-J5-tId" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-74" y="793"/>
+            <point key="canvasLocation" x="-45" y="1283"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="qbI-F5-TrJ">
@@ -182,7 +183,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FRb-dm-Q25" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="22" y="2102"/>
+            <point key="canvasLocation" x="323" y="1940"/>
         </scene>
         <!--Comment View Controller-->
         <scene sceneID="LiC-kp-yQ4">
