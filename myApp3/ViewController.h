@@ -15,7 +15,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *callCamera;
 - (IBAction)tapCallCamera:(id)sender;
 
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIView *albumView;
 
+@property (weak, nonatomic) IBOutlet UITabBar *myTabBar;
 
 
 @end
